@@ -1,39 +1,12 @@
 <?php
-
-
-
 /*
-
-
-
 Plugin Name: Shop My Label Shopkeeper Plugin
-
-
-
 Plugin URI: http://www.shopmylabel.com
-
- 
-
 Description: This plugin will add a few urls to your blog to handle adding <strong>MME</strong> to your blog. The only URL you may want to add is  <strong>{blogname}/cart</strong>.  This will allow clients to checkout from your blog using the MME.  The plugin will give clients an option to go to this link after adding an item to their cart.   This plugin requires permalinks  turned on, mod_rewrite (if hosted locally), and no categories named in conflict with the newly rewritten URLs.
-
-
-
-Version: 1.2
-
-
-
+Version: 1.21
 Author: Team Shop My Label
-
-
-
 Author URI: http://www.shopmylabel.com/mme
-
-
-
 License: See http://www.shopmylabel.com for License agreement
-
-
-
 */
 
 
@@ -174,6 +147,8 @@ $smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/
 
 
 
+
+
 // adding shortcode for blog[sml url size]
 
 
@@ -227,94 +202,38 @@ function sml_flush_rules() {
 
 
 }       
-
-
-
-add_filter('query_vars', 'parameter_queryvars' );
-
-
-
-function parameter_queryvars( $qvars ){
-
-
-
-    $qvars[] = ' myvar';
-
-
-
-    return $qvars;
-
-
+/***
+  Excludes the cart pages from WP redirection
+***/
+add_filter('redirect_canonical', 'sml_cart_redirect', 10, 2);
+function sml_cart_redirect($redirect_url, $requested_url) {
+  if((substr($requested_url, -5) =='/cart')||(substr($requested_url, -9) =='/cart_dev')){
+    return $requested_url;
+    } else {
+        return $redirect_url;
+    }
 
 }
 
 
-
 function sml_redirect() {
 
-
-
     /***
-
-
-
     rewrite rules are set in array that can be extended for more custom pages
-
-
-
     The sml_url_rewrite sets 3 urls that will be rewritten to the sml_pluggin folder
-
-
-
     The request is filtered against this array and if found then redirect to that page
-
-
-
     If the request is not found then it is ignored and continues down the "wp routing table"
-
-
-
     ***/
 
-
-
     global $wp;
-
-
-
     global $sml_url_rewrite;
-
-
-
     if (!is_array($sml_url_rewrite)) {
-
-
-
         $sml_url_rewrite = array(
 
-
-
           "cart" => "wp-content/plugins/sml_shopkeeper/sml_cart.php",
-
-
-
-          "cart_dev" => "wp-content/plugins/sml_shopkeeper/sml_cart_dev.php",
-
-
-
-          "sml_style/style.css" => "wp-content/plugins/sml_shopkeeper/sml_shopkeeper.css"
-
-
-
-          
-
-
-
-          );
-
-
-
-    }
+          "cart_dev" => "wp-content/plugins/sml_shopkeeper/sml_cart_dev.php"
+    );
+  }
 
 
 
