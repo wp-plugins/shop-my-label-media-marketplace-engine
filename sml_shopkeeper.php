@@ -6,7 +6,7 @@ Description: This plugin will add a few urls to your blog to handle adding <stro
 Version: 1.3.0
 Author: Team Shop My Label
 Author URI: http://www.shopmylabel.com/mme
-License: See http://www.shopmylabel.com for License agreement
+License: GPLv2 or later
 */
 
 
