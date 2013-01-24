@@ -18,7 +18,7 @@ Description: This plugin will add a few urls to your blog to handle adding <stro
 
 
 
-Version: 1.1
+Version: 1.2
 
 
 
@@ -150,11 +150,11 @@ $smlWindow = '<script>$("#smlWrapper").remove();</script>';
 
 
 
-$smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/plugins/sml_shopkeeper/sml_close.png" class="sml_close_button" /><iframe  id="sml_iframe" scr="/sml_loader" class="large" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>';
+$smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/plugins/sml_shopkeeper/sml_close.png" class="sml_close_button" /><div id="smlLoader"></div><iframe  id="sml_iframe" scr="/sml_loader" class="large" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>';
 
 
 
-    $smlWindow .= '<div class="shopWindowWrapper_'.$size.'"><div  class="'.$size.'">'.$windowContent.'</div></div>';
+    $smlWindow .= '<table><td><div class="shopWindowWrapper_'.$size.'"><div  class="'.$size.'">'.$windowContent.'</div></div></td></table>';
 
 
 
@@ -302,11 +302,11 @@ function sml_redirect() {
 
 
 
-          "sml_style/style.css" => "wp-content/plugins/sml_shopkeeper/sml_shopkeeper.css",
+          "sml_style/style.css" => "wp-content/plugins/sml_shopkeeper/sml_shopkeeper.css"
 
 
 
-          "sml_loader" => "wp-content/plugins/sml_shopkeeper/sml_loader.html"
+          
 
 
 
