@@ -74,7 +74,7 @@
 
 
 
-<link href="/wp-content/plugins/sml_shopkeeper/sml_shopkeeper.css" rel="stylesheet" type="text/css" />
+<link href="/wp-content/plugins/shop-my-label-media-marketplace-engine/sml_shopkeeper.css" rel="stylesheet" type="text/css" />
 
 
 

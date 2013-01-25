@@ -3,7 +3,7 @@
 Plugin Name: Shop My Label Shopkeeper Plugin
 Plugin URI: http://www.shopmylabel.com
 Description: This plugin will add a few urls to your blog to handle adding <strong>MME</strong> to your blog. The only URL you may want to add is  <strong>{blogname}/cart</strong>.  This will allow clients to checkout from your blog using the MME.  The plugin will give clients an option to go to this link after adding an item to their cart.   This plugin requires permalinks  turned on, mod_rewrite (if hosted locally), and no categories named in conflict with the newly rewritten URLs.
-Version: 1.3.1
+Version: 1.3.2
 Author: Team Shop My Label
 Author URI: http://www.shopmylabel.com/mme
 License: GPLv2 or later
@@ -123,7 +123,7 @@ $smlWindow = '<script>$("#smlWrapper").remove();</script>';
 
 
 
-$smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/plugins/sml_shopkeeper/sml_close.png" class="sml_close_button" /><div id="smlLoader"></div><iframe  id="sml_iframe" scr="/sml_loader" class="large" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>';
+$smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/plugins/shop-my-label-media-marketplace-engine/sml_close.png" class="sml_close_button" /><div id="smlLoader"></div><iframe  id="sml_iframe" scr="/sml_loader" class="large" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>';
 
 
 
@@ -131,11 +131,11 @@ $smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/
 
 
 
-    $smlWindow .='<link href="/wp-content/plugins/sml_shopkeeper/sml_shopkeeper.css" rel="stylesheet" type="text/css" />';
+    $smlWindow .='<link href="/wp-content/plugins/shop-my-label-media-marketplace-engine/sml_shopkeeper.css" rel="stylesheet" type="text/css" />';
 
 
 
-    $smlWindow .='<script src="/wp-content/plugins/sml_shopkeeper/sml_popup.js" type="text/javascript"></script>';
+    $smlWindow .='<script src="/wp-content/plugins/shop-my-label-media-marketplace-engine/sml_popup.js" type="text/javascript"></script>';
 
 
 
@@ -230,8 +230,8 @@ function sml_redirect() {
     if (!is_array($sml_url_rewrite)) {
         $sml_url_rewrite = array(
 
-          "cart" => "wp-content/plugins/sml_shopkeeper/sml_cart.php",
-          "cart_dev" => "wp-content/plugins/sml_shopkeeper/sml_cart_dev.php"
+          "cart" => "wp-content/plugins/shop-my-label-media-marketplace-engine/sml_cart.php",
+          "cart_dev" => "wp-content/plugins/shop-my-label-media-marketplace-engine/sml_cart_dev.php"
     );
   }
 
