@@ -3,7 +3,7 @@
 Plugin Name: Shop My Label Shopkeeper Plugin
 Plugin URI: http://www.shopmylabel.com
 Description: This plugin will add a few urls to your blog to handle adding <strong>MME</strong> to your blog. The only URL you may want to add is  <strong>{blogname}/cart</strong>.  This will allow clients to checkout from your blog using the MME.  The plugin will give clients an option to go to this link after adding an item to their cart.   This plugin requires permalinks  turned on, mod_rewrite (if hosted locally), and no categories named in conflict with the newly rewritten URLs.
-Version: 1.3.5
+Version: 1.3.1
 Author: Team Shop My Label
 Author URI: http://www.shopmylabel.com/mme
 License: GPLv2 or later
