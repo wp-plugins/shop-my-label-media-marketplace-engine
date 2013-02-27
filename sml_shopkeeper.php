@@ -1,13 +1,26 @@
 <?php
+
 /*
+
 Plugin Name: Shop My Label Shopkeeper Plugin
+
 Plugin URI: http://www.shopmylabel.com
+
 Description: This plugin will add a few urls to your blog to handle adding <strong>MME</strong> to your blog. The only URL you may want to add is  <strong>{blogname}/cart</strong>.  This will allow clients to checkout from your blog using the MME.  The plugin will give clients an option to go to this link after adding an item to their cart.   This plugin requires permalinks  turned on, mod_rewrite (if hosted locally), and no categories named in conflict with the newly rewritten URLs.
-Version: 1.3.2
+
+Version: 1.3.3
+
 Author: Team Shop My Label
+
 Author URI: http://www.shopmylabel.com/mme
+
 License: GPLv2 or later
+
 */
+
+
+
+
 
 
 
@@ -15,7 +28,15 @@ function getSmlWindow($windowUrl) {
 
 
 
+
+
+
+
   $ch = curl_init();
+
+
+
+
 
 
 
@@ -23,7 +44,15 @@ function getSmlWindow($windowUrl) {
 
 
 
+
+
+
+
   curl_setopt($ch, CURLOPT_URL, $windowUrl);
+
+
+
+
 
 
 
@@ -31,7 +60,15 @@ function getSmlWindow($windowUrl) {
 
 
 
+
+
+
+
   curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+
+
+
+
 
 
 
@@ -39,7 +76,15 @@ function getSmlWindow($windowUrl) {
 
 
 
+
+
+
+
   curl_close($ch);
+
+
+
+
 
 
 
@@ -47,7 +92,15 @@ function getSmlWindow($windowUrl) {
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -55,7 +108,15 @@ function smlwindow($atts, $content = null) {
 
 
 
+
+
+
+
     $siteUrl = get_home_url();
+
+
+
+
 
 
 
@@ -63,7 +124,15 @@ function smlwindow($atts, $content = null) {
 
 
 
+
+
+
+
     $siteUrl = str_replace('https://','',$siteUrl);
+
+
+
+
 
 
 
@@ -71,7 +140,15 @@ function smlwindow($atts, $content = null) {
 
 
 
+
+
+
+
         "size"=>"large",
+
+
+
+
 
 
 
@@ -79,7 +156,15 @@ function smlwindow($atts, $content = null) {
 
 
 
+
+
+
+
         ), $atts));
+
+
+
+
 
 
 
@@ -87,7 +172,15 @@ function smlwindow($atts, $content = null) {
 
 
 
+
+
+
+
     }elseif($size == 'medium'){
+
+
+
+
 
 
 
@@ -95,7 +188,15 @@ function smlwindow($atts, $content = null) {
 
 
 
+
+
+
+
        $size = 'large';        
+
+
+
+
 
 
 
@@ -103,7 +204,15 @@ function smlwindow($atts, $content = null) {
 
 
 
+
+
+
+
     $fix = str_replace('/stores/', '/embed/', $url);
+
+
+
+
 
 
 
@@ -111,7 +220,15 @@ function smlwindow($atts, $content = null) {
 
 
 
+
+
+
+
     $curlUrl = $embed.'/'.$siteUrl;
+
+
+
+
 
 
 
@@ -119,7 +236,15 @@ function smlwindow($atts, $content = null) {
 
 
 
-$smlWindow = '<script>$("#smlWrapper").remove();</script>';    
+
+
+$smlWindow = '<script>window.jQuery || document.write(\'<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"><\/script>\')</script>';  
+
+$smlWindow .= '<script>$("#smlWrapper").remove();</script>';    
+
+
+
+
 
 
 
@@ -127,7 +252,15 @@ $smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/
 
 
 
+
+
+
+
     $smlWindow .= '<table><td><div class="shopWindowWrapper_'.$size.'"><div  class="'.$size.'">'.$windowContent.'</div></div></td></table>';
+
+
+
+
 
 
 
@@ -135,7 +268,15 @@ $smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/
 
 
 
+
+
+
+
     $smlWindow .='<script src="/wp-content/plugins/shop-my-label-media-marketplace-engine/sml_popup.js" type="text/javascript"></script>';
+
+
+
+
 
 
 
@@ -143,7 +284,17 @@ $smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
 
 
 
@@ -153,7 +304,15 @@ $smlWindow .= '<div id="smlWrapper"><div id="sml_product"><img src="/wp-content/
 
 
 
+
+
+
+
 add_shortcode("sml", "smlwindow");
+
+
+
+
 
 
 
@@ -161,7 +320,15 @@ add_filter('generate_rewrite_rules', 'sml_flush_rules');
 
 
 
+
+
+
+
 add_action('template_redirect', 'sml_redirect');
+
+
+
+
 
 
 
@@ -169,7 +336,15 @@ function sml_flush_rules() {
 
 
 
+
+
+
+
     /***
+
+
+
+
 
 
 
@@ -177,7 +352,15 @@ function sml_flush_rules() {
 
 
 
+
+
+
+
     ***/  
+
+
+
+
 
 
 
@@ -185,11 +368,23 @@ function sml_flush_rules() {
 
 
 
+
+
+
+
         return;
 
 
 
+
+
+
+
     }
+
+
+
+
 
 
 
@@ -197,43 +392,87 @@ function sml_flush_rules() {
 
 
 
+
+
+
+
     $wp_rewrite->flush_rules();
 
 
 
+
+
+
+
 }       
+
 /***
+
   Excludes the cart pages from WP redirection
+
 ***/
+
 add_filter('redirect_canonical', 'sml_cart_redirect', 10, 2);
+
 function sml_cart_redirect($redirect_url, $requested_url) {
+
   if((substr($requested_url, -5) =='/cart')||(substr($requested_url, -9) =='/cart_dev')){
+
     return $requested_url;
+
     } else {
+
         return $redirect_url;
+
     }
+
+
 
 }
 
 
+
+
+
 function sml_redirect() {
 
+
+
     /***
+
     rewrite rules are set in array that can be extended for more custom pages
+
     The sml_url_rewrite sets 3 urls that will be rewritten to the sml_pluggin folder
+
     The request is filtered against this array and if found then redirect to that page
+
     If the request is not found then it is ignored and continues down the "wp routing table"
+
     ***/
 
+
+
     global $wp;
+
     global $sml_url_rewrite;
+
     if (!is_array($sml_url_rewrite)) {
+
         $sml_url_rewrite = array(
 
+
+
           "cart" => "wp-content/plugins/shop-my-label-media-marketplace-engine/sml_cart.php",
+
           "cart_dev" => "wp-content/plugins/shop-my-label-media-marketplace-engine/sml_cart_dev.php"
+
     );
+
   }
+
+
+
+
 
 
 
@@ -241,7 +480,15 @@ function sml_redirect() {
 
 
 
+
+
+
+
         $file = $sml_url_rewrite[$wp->request];
+
+
+
+
 
 
 
@@ -249,7 +496,15 @@ function sml_redirect() {
 
 
 
+
+
+
+
           header('HTTP/1.1 200 OK');
+
+
+
+
 
 
 
@@ -257,7 +512,15 @@ function sml_redirect() {
 
 
 
+
+
+
+
           exit;
+
+
+
+
 
 
 
@@ -265,7 +528,15 @@ function sml_redirect() {
 
 
 
+
+
+
+
   }
+
+
+
+
 
 
 

@@ -1,34 +1,56 @@
-$('#sml_product').hover(
+jQuery('#sml_product').hover(
 
+  function(){
 
-
-	function(){
-
-
-
-		// do nothing			
-
-
-
-	},function(){
-
-
-
-		if(insideSmlFrame !== true){
-
-
-
-			//setTimeout('hidePopUP()',500);
+    // do nothing     
 
 
 
 
 
-		}
+
+
+  },function(){
 
 
 
-	}
+
+
+
+
+    if(insideSmlFrame !== true){
+
+
+
+
+
+
+
+      //setTimeout('hidePopUP()',500);
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+  }
+
+
+
+
 
 
 
@@ -40,31 +62,73 @@ $('#sml_product').hover(
 
 
 
+
+
+
+
+
+
+
+
 function hidePopUP(){
 
 
 
-	if(insideSmlFrame !== true){
 
 
 
-		if($('#smlWrapper').is(":visible")){
+
+  if(insideSmlFrame !== true){
 
 
 
-				$('#smlWrapper').fadeOut();
 
 
 
-		}
+
+    if(jQuery('#smlWrapper').is(":visible")){
 
 
 
-	}
+
+
+
+
+        jQuery('#smlWrapper').fadeOut();
+
+        jQuery('#right').fadeIn();
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+  }
+
+
+
+
 
 
 
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -76,7 +140,15 @@ function fullScreenIt(el) {
 
 
 
+
+
+
+
     "use strict";
+
+
+
+
 
 
 
@@ -84,15 +156,31 @@ function fullScreenIt(el) {
 
 
 
-        var winWidth = $(window).width();
 
 
 
-        var winHeight = $(window).height();
+
+        var winWidth = jQuery(window).width();
 
 
 
-        var docHeight = $(document).scrollTop();
+
+
+
+
+        var winHeight = jQuery(window).height();
+
+
+
+
+
+
+
+        var docHeight = jQuery(document).scrollTop();
+
+
+
+
 
 
 
@@ -100,7 +188,15 @@ function fullScreenIt(el) {
 
 
 
+
+
+
+
         el.css("height", docHeight+winHeight+"px");
+
+
+
+
 
 
 
@@ -108,11 +204,23 @@ function fullScreenIt(el) {
 
 
 
-	if(((0-paddingHeight) >= 100) || paddingHeight >-100){
 
 
 
-            $('#smlWrapper').css('padding-top',docHeight+'px');
+
+  if(((0-paddingHeight) >= 100) || paddingHeight >-100){
+
+
+
+
+
+
+
+            jQuery('#smlWrapper').css('padding-top',docHeight+'px');
+
+
+
+
 
 
 
@@ -120,11 +228,23 @@ function fullScreenIt(el) {
 
 
 
-		$('#smlWrapper').css('padding-top','100px');
 
 
 
-	}
+
+    jQuery('#smlWrapper').css('padding-top','100px');
+
+
+
+
+
+
+
+  }
+
+
+
+
 
 
 
@@ -132,15 +252,31 @@ function fullScreenIt(el) {
 
 
 
-    $(window).resize(scrollIt);
 
 
 
-    $(window).scroll(scrollIt);
+
+    jQuery(window).resize(scrollIt);
+
+
+
+
+
+
+
+    jQuery(window).scroll(scrollIt);
+
+
+
+
 
 
 
     scrollIt();
+
+
+
+
 
 
 
@@ -152,7 +288,19 @@ function fullScreenIt(el) {
 
 
 
-fullScreenIt($('#smlWrapper'));
+
+
+
+
+
+
+
+
+fullScreenIt(jQuery('#smlWrapper'));
+
+
+
+
 
 
 
@@ -160,7 +308,15 @@ var insideSmlFrame = false;
 
 
 
+
+
+
+
 var smlHoverTrue = function(e) {
+
+
+
+
 
 
 
@@ -168,7 +324,15 @@ var smlHoverTrue = function(e) {
 
 
 
+
+
+
+
         insideSmlFrame = true;
+
+
+
+
 
 
 
@@ -176,7 +340,19 @@ var smlHoverTrue = function(e) {
 
 
 
+
+
+
+
 };
+
+
+
+
+
+
+
+
 
 
 
@@ -188,7 +364,15 @@ var smlHoverFalse = function() {
 
 
 
+
+
+
+
     if (insideSmlFrame === true){
+
+
+
+
 
 
 
@@ -196,7 +380,15 @@ var smlHoverFalse = function() {
 
 
 
+
+
+
+
     }
+
+
+
+
 
 
 
@@ -204,21 +396,43 @@ var smlHoverFalse = function() {
 
 
 
-$("#sml_iframe").mouseout(smlHoverFalse);
 
 
 
-$("#sml_iframe").mouseover(smlHoverTrue);
+
+jQuery("#sml_iframe").mouseout(smlHoverFalse);
 
 
 
-$("#sml_iframe, .sml_close_button").click(function(){
 
 
 
-	$('#smlWrapper').fadeOut();
+
+jQuery("#sml_iframe").mouseover(smlHoverTrue);
+
+
+
+
+
+
+
+jQuery("#sml_iframe, .sml_close_button").click(function(){
+
+
+
+
+
+
+
+  jQuery('#smlWrapper').fadeOut();
+
+  jQuery('#right').fadeIn();
+
+
 
 
 
 });
+
+
 
